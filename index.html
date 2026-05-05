@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tannaim Study Trainer (English)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      text-align: center;
+      padding: 40px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      width: 420px;
+      margin: auto;
+      min-height: 220px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    button {
+      margin: 10px;
+      padding: 10px 18px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Tannaim Study Trainer</h1>
+<p><strong>No Hebrew Required.</strong> Learn who shaped the Mishnah and how they thought.</p>
+
+<div class="card">
+  <h2 id="front"></h2>
+  <p id="back" style="display:none; white-space: pre-line;"></p>
+</div>
+
+<button onclick="flipCard()">Show Explanation</button>
+<button onclick="nextCard()">Next Figure</button>
+
+<script>
+const cards = [
+  {
+    front: "Hillel (Early Tanna)",
+    back:
+      "Time Period:\nAbout 110 BCE – 10 CE\n\nWho He Was:\nA leading Jewish legal teacher before the destruction of the Temple.\n\nWhy He Matters:\nHe taught that religious law should be humane, flexible, and focused on ethics.\n\nBig Idea:\nIntent and compassion matter when interpreting the law."
+  },
+  {
+    front: "Shammai (Early Tanna)",
+    back:
+      "Time Period:\nAbout 50 BCE – 30 CE\n\nWho He Was:\nA contemporary of Hillel and a major legal authority.\n\nWhy He Matters:\nHe believed the law should be applied strictly and consistently.\n\nBig Idea:\nRules should not bend easily, even for hardship."
+  },
+  {
+    front: "Rabbi Akiva (Middle Tanna)",
+    back:
+      "Time Period:\nAbout 50 – 135 CE\n\nWho He Was:\nOne of the most influential teachers in Jewish history.\n\nWhy He Matters:\nHe organized oral traditions into teachable principles.\n\nBig Idea:\nEvery detail of the law has meaning and structure."
+  },
+  {
+    front: "Rabbi Judah the Prince (Late Tanna)",
+    back:
+      "Time Period:\nAbout 135 – 217 CE\n\nWho He Was:\nThe leader who edited and preserved the Mishnah.\n\nWhy He Matters:\nWithout him, the Mishnah may have been lost.\n\nBig Idea:\nOral teaching must be preserved to survive history."
+  }
+];
+
+let index = 0;
+let showingBack = false;
+
+function showCard() {
+  document.getElementById("front").innerText = cards[index].front;
+  document.getElementById("back").innerText = cards[index].back;
+  document.getElementById("back").style.display = "none";
+  showingBack = false;
+}
+
+function flipCard() {
+  const back = document.getElementById("back");
+  back.style.display = showingBack ? "none" : "block";
+  showingBack = !showingBack;
+}
+
+function nextCard() {
+  index = (index + 1) % cards.length;
+  showCard();
+}
+
+showCard();
+</script>
+
+</body>
+</html>
